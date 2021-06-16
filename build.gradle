@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'com.pmf'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':presentation')
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.4.7'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}

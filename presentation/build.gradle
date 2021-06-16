@@ -1,0 +1,28 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.pmf'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '16'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':business-logic')
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.4.7'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+jar{
+    enabled = true
+}
+
+test {
+    useJUnitPlatform()
+}
