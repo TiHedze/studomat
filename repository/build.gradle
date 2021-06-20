@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'io.spring.dependency-management'
 }
 
 
@@ -8,8 +9,15 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.postgresql:postgresql:42.1.4'
+    implementation project(':entities')
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc:2.5.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+jar{
+    enabled = true
 }
 
 test {

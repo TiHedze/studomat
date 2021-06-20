@@ -3,4 +3,5 @@ rootProject.name = 'studomat'
 include 'presentation'
 include 'business-logic'
 include 'repository'
+include 'entities'
 

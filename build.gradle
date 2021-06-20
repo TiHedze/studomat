@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
 }
 
 group 'com.pmf'
@@ -10,6 +11,8 @@ repositories {
 }
 
 dependencies {
+    implementation project(':repository')
+    implementation project(':business-logic')
     implementation project(':presentation')
     implementation 'org.springframework.boot:spring-boot-autoconfigure:2.4.7'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
