@@ -47,7 +47,7 @@ public class CollegeEnrollmentRepositoryImpl implements CollegeEnrollmentReposit
     @Override
     public Integer avgGrade(Integer year) {
         String query = "SELECT AVG(course_enrollment.grade) FROM college_enrollment INNER JOIN " +
-                "course_enrollment ON college_enrollment.id = course_enrollment.college_id INNER JOIN " +
+                "course_enrollment ON college_enrollment.student_id = course_enrollment.student_id INNER JOIN " +
                 "course ON course_enrollment.course_id = course.id WHERE course.year = ?";
         return DataAccessUtils.intResult(this.jdbcTemplate.query(query, new SingleColumnRowMapper<Integer>(), year));
     }
@@ -55,7 +55,7 @@ public class CollegeEnrollmentRepositoryImpl implements CollegeEnrollmentReposit
     @Override
     public Integer avgStudentGrade(Integer year, Integer studentId) {
         String query = "SELECT AVG(course_enrollment.grade) FROM college_enrollment INNER JOIN " +
-                "course_enrollment ON college_enrollment.id = course_enrollment.college_id INNER JOIN " +
+                "course_enrollment ON college_enrollment.student_id = course_enrollment.student_id INNER JOIN " +
                 "course ON course_enrollment.course_id = course.id WHERE course.year = ? AND college_enrollment.student_id = ?";
         return DataAccessUtils.intResult(this.jdbcTemplate.query(query, new SingleColumnRowMapper<Integer>(), year, studentId));
     }

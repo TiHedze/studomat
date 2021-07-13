@@ -38,7 +38,7 @@ public class CollegeEnrollmentController {
     }
 
     @GetMapping("/avgGrade/{year}/{studentId}")
-    public Integer avgStudentGrade(Integer year, Integer studentId) {
+    public Integer avgStudentGrade(@PathVariable Integer year, @PathVariable Integer studentId) {
         return this.collegeEnrollmentService.avgStudentGrade(year, studentId);
     }
 }
