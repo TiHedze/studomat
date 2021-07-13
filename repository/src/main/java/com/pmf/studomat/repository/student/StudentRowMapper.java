@@ -1,4 +1,4 @@
-package com.pmf.studomat.repository.rowmapper;
+package com.pmf.studomat.repository.student;
 
 import com.pmf.studomat.entities.Student;
 import org.springframework.jdbc.core.RowMapper;
@@ -17,6 +17,7 @@ public class StudentRowMapper implements RowMapper<Student> {
         student.setId(rs.getInt("id"));
         student.setFirstName(rs.getString("firstname"));
         student.setLastName(rs.getString("lastname"));
+        student.setJmbag(rs.getString("jmbag"));
 
         return student;
     }

@@ -4,6 +4,7 @@ public class Student {
     private Integer id;
     private String firstName;
     private String lastName;
+    private String jmbag;
 
     public void setId(Integer id) {
         this.id = id;
@@ -27,5 +28,13 @@ public class Student {
 
     public String getLastName() {
         return this.lastName;
+    }
+
+    public String getJmbag() {
+        return this.jmbag;
+    }
+
+    public void setJmbag(String jmbag) {
+        this.jmbag = jmbag;
     }
 }
