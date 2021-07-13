@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
@@ -37,8 +38,12 @@ public class CollegeRepositoryImpl implements CollegeRepository{
         String query = "INSERT INTO college (university_id, name) VALUES (?, ?)";
         KeyHolder holder = new GeneratedKeyHolder();
 
-        Integer id = this.jdbcTemplate.update(connection ->
-                connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS),
+        Integer id = this.jdbcTemplate.update(connection -> {
+                    PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                    ps.setInt(1, universityId);
+                    ps.setString(2, name);
+                    return ps;
+                },
                 holder);
         return this.getCollegeById(id);
     }

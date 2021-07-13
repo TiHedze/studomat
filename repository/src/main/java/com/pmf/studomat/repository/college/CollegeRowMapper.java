@@ -12,7 +12,7 @@ public class CollegeRowMapper implements RowMapper<College> {
         College college = new College();
 
         college.setId(rs.getInt("id"));
-        college.setUniversityId(rs.getInt("universityId"));
+        college.setUniversityId(rs.getInt("university_id"));
         college.setName(rs.getString("name"));
 
         return college;
