@@ -3,8 +3,7 @@ package com.pmf.studomat.entities;
 public class CourseEnrollment {
     private Integer id;
     private Integer studentId;
-    private Integer year;
-    private String name;
+    private Integer courseId;
     private Integer grade;
 
     public void setId(Integer id) {
@@ -23,27 +22,19 @@ public class CourseEnrollment {
         return this.studentId;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getYear() {
-        return this.year;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
     public void setGrade(Integer grade) {
         this.grade = grade;
     }
 
     public Integer getGrade() {
         return this.grade;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
     }
 }
