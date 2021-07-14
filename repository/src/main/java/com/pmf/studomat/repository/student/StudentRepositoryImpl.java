@@ -39,11 +39,16 @@ public class StudentRepositoryImpl implements StudentRepository{
         String query = "INSERT INTO student (firstname, lastname, jmbag) VALUES (?, ?, ?)";
         KeyHolder holder = new GeneratedKeyHolder();
 
-        Integer id = this.jdbcTemplate.update(connection ->
-                connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS),
+        this.jdbcTemplate.update(connection ->{
+            PreparedStatement preparedStatement = connection.prepareStatement(query, new String[]{"id"});
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2,lastName);
+            preparedStatement.setString(3, jmbag);
+
+            return preparedStatement;},
                 holder);
 
-        return this.getStudentById(id);
+        return this.getStudentById(holder.getKeyAs(Integer.class));
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.pmf.studomat.business.logic.student;
+package com.pmf.studomat.business.logic.course;
 
 import org.springframework.stereotype.Service;
 

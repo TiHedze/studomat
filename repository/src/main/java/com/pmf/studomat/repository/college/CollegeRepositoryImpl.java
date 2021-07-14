@@ -39,7 +39,7 @@ public class CollegeRepositoryImpl implements CollegeRepository{
         KeyHolder holder = new GeneratedKeyHolder();
 
         Integer id = this.jdbcTemplate.update(connection -> {
-                    PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                    PreparedStatement ps = connection.prepareStatement(query, new String[]{"id"});
                     ps.setInt(1, universityId);
                     ps.setString(2, name);
                     return ps;

@@ -1,4 +1,4 @@
-package com.pmf.studomat.business.logic.student;
+package com.pmf.studomat.business.logic.course;
 
 import com.pmf.studomat.entities.CourseEnrollment;
 import com.pmf.studomat.repository.courseEnrollment.CourseEnrollmentRepository;
@@ -25,7 +25,7 @@ public class CourseEnrollmentServiceImpl implements CourseEnrollmentService {
 
     @Override
     public CourseEnrollment create(Integer studentId, Integer courseId) {
-        return this.create(studentId, courseId, -1);
+        return this.courseEnrollmentRepository.createCourseEnrollment(studentId, courseId, -1);
     }
 
     @Override

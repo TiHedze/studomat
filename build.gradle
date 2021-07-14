@@ -15,6 +15,7 @@ dependencies {
     implementation project(':business-logic')
     implementation project(':presentation')
     implementation 'org.springframework.boot:spring-boot-autoconfigure:2.4.7'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }

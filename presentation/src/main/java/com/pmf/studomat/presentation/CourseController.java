@@ -1,7 +1,7 @@
 package com.pmf.studomat.presentation;
 
 
-import com.pmf.studomat.business.logic.student.CourseService;
+import com.pmf.studomat.business.logic.course.CourseService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

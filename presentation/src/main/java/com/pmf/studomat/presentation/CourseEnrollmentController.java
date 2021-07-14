@@ -1,11 +1,9 @@
 package com.pmf.studomat.presentation;
 
-import com.pmf.studomat.business.logic.student.CourseEnrollmentService;
+import com.pmf.studomat.business.logic.course.CourseEnrollmentService;
 import com.pmf.studomat.entities.CourseEnrollment;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.pmf.studomat.entities.requests.CourseEnrollmentRequest;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/courseEnrollment")
@@ -22,22 +20,17 @@ public class CourseEnrollmentController {
         return this.courseEnrollmentService.getById(id);
     }
 
-    @GetMapping("/create/{studentId}/{courseId}/{grade}")
-    public CourseEnrollment create(@PathVariable Integer studentId, @PathVariable Integer courseId, @PathVariable Integer grade) {
-        return this.courseEnrollmentService.create(studentId, courseId, grade);
+    @PostMapping
+    public CourseEnrollment enroll(@RequestBody CourseEnrollmentRequest request) {
+        return this.courseEnrollmentService.create(request.studentId, request.collegeId);
     }
 
-    @GetMapping("/create/{studentId}/{courseId}")
-    public CourseEnrollment create(@PathVariable Integer studentId, @PathVariable Integer courseId) {
-        return this.courseEnrollmentService.create(studentId, courseId);
-    }
-
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public Integer delete(@PathVariable Integer id) {
         return this.courseEnrollmentService.delete(id);
     }
 
-    @GetMapping("/setGrade/{id}/{grade}")
+    @PutMapping("/setGrade/{id}/{grade}")
     public Integer setGrade(@PathVariable Integer id, @PathVariable Integer grade) {
         return this.courseEnrollmentService.setGrade(id, grade);
     }

@@ -1,11 +1,11 @@
 package com.pmf.studomat.presentation;
 
 import com.pmf.studomat.entities.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.pmf.studomat.entities.requests.CreateStudentRequest;
+import org.springframework.web.bind.annotation.*;
 import com.pmf.studomat.business.logic.student.StudentService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/student")
@@ -19,14 +19,20 @@ public class StudentController {
     }
 
     @GetMapping
-    public Student getStudent()
+    public List<Student> getStudents(@RequestParam Integer page, @RequestParam Integer pageSize)
     {
-        return this.getStudentById(1);
+        return this.studentService.getStudents(page, pageSize);
     }
 
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable Integer id)
     {
         return this.studentService.getById(id);
+    }
+
+    @PostMapping
+    public Student createStudent(@RequestBody CreateStudentRequest request)
+    {
+        return this.studentService.createStudent(request.firstName, request.lastName);
     }
 }

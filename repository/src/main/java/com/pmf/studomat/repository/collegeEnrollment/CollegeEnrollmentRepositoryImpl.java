@@ -33,7 +33,7 @@ public class CollegeEnrollmentRepositoryImpl implements CollegeEnrollmentReposit
         KeyHolder holder = new GeneratedKeyHolder();
 
         Integer id = this.jdbcTemplate.update(connection -> {
-                    PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                    PreparedStatement ps = connection.prepareStatement(query, new String[]{"id"});
                     ps.setInt(1, studentId);
                     ps.setInt(2, collegeId);
                     ps.setInt(3, year);

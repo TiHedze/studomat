@@ -1,11 +1,9 @@
 package com.pmf.studomat.presentation;
 
-import com.pmf.studomat.business.logic.student.CollegeService;
+import com.pmf.studomat.business.logic.college.CollegeService;
 import com.pmf.studomat.entities.College;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.pmf.studomat.entities.requests.CollegeCreateRequest;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/college")
@@ -27,13 +25,13 @@ public class CollegeController {
         return this.collegeService.getById(id);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public Integer deleteCollegeById(@PathVariable Integer id) {
         return this.collegeService.deleteById(id);
     }
 
-    @GetMapping("/create/{universityId}/{name}")
-    public College createCollege(@PathVariable Integer universityId, @PathVariable String name) {
-        return this.collegeService.create(universityId, name);
+    @PostMapping
+    public College createCollege(@RequestBody CollegeCreateRequest request) {
+        return this.collegeService.create(request.universityId, request.name);
     }
 }
